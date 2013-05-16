@@ -3,10 +3,8 @@ Exec{ path => '/usr/bin:/bin:/usr/sbin:/sbin' }
 define addaptrepo ($ppa = $title) {
   exec {'add-apt-repository':
     command => "add-apt-repository -y ${ppa}",
-  }
+  } ->
   exec{'apt-get update':}
-
-  Exec['add-apt-repository'] ~> Exec['apt-get update']
 }
 
 
