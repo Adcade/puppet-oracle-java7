@@ -1,10 +1,10 @@
-Exec{ path => '/usr/bin:/bin:/usr/sbin:/sbin' }
-
 define addaptrepo ($ppa = $title) {
   exec {'add-apt-repository':
     command => "add-apt-repository -y ${ppa}",
   } ->
-  exec{'apt-get update':}
+  exec{'always apt-get update':
+    command => 'apt-get update',
+  }
 }
 
 
