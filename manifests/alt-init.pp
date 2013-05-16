@@ -2,7 +2,7 @@ Exec{ path => '/usr/bin:/bin:/usr/sbin:/sbin' }
 
 #file { '/etc/apt/sources.list.d':
 #  ensure => directory,
-#} ~> Apt::Ppa<||>
+#} -> Apt::Ppa<||>
 
 class { 'apt':
   always_apt_update    => false,
