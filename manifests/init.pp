@@ -30,8 +30,8 @@ class java7 {
   exec { "accept_license":
     command => "debconf-set-selections ${java_preseed}",
     path    => "/usr/bin",
-    require => [Package['debconf-utils'] -> File[$java_preseed]],
-  } 
+    require => [Package['debconf-utils'], File[$java_preseed]],
+  }
 
   package {["oracle-java7-installer", "oracle-java7-set-default"]:
     ensure  => present,
