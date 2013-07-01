@@ -1,9 +1,7 @@
 class java7 {
   $java_preseed = '/tmp/java.preseed'
 
-  file { '/etc/apt/sources.list.d':
-    ensure => directory,
-  } -> Apt::Ppa<||>
+  include apt
 
   apt::ppa { 'ppa:webupd8team/java':
     before  => Package['debconf-utils'],
