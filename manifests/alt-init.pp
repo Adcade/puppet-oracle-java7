@@ -1,29 +1,12 @@
-Exec{ path => '/usr/bin:/bin:/usr/sbin:/sbin' }
-
-#file { '/etc/apt/sources.list.d':
-#  ensure => directory,
-#} -> Apt::Ppa<||>
-
-class { 'apt':
-  always_apt_update    => false,
-  disable_keys         => undef,
-  proxy_host           => false,
-  proxy_port           => '8080',
-  purge_sources_list   => false,
-  purge_sources_list_d => false,
-  purge_preferences_d  => false
-}
-
 class java7 {
   $java_preseed = '/tmp/java.preseed'
 
-  #package {'python-software-properties':
-  #  ensure => present,
-  #}
+  file { '/etc/apt/sources.list.d':
+    ensure => directory,
+  } -> Apt::Ppa<||>
 
-  apt::ppa{'ppa:webupd8team/java':
+  apt::ppa { 'ppa:webupd8team/java':
     before  => Package['debconf-utils'],
-    require => Class['apt']
   }
 
   package {'debconf-utils':
