@@ -1,0 +1,8 @@
+name         'adcade-java7'
+version      '0.1.0'
+summary      'Install Oracle JDK7 on ubuntu'
+description  'Install Oracle JDK7 on ubuntu'
+author       'Yangming Huang'
+license      'MIT'
+project_page 'https://github.com/Adcade/puppet-java7'
+dependency   'puppetlabs/apt'
